@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+</head>
+<body>
+    <input type="date" onchange="changeDate()" id="input_date">
+    <div id="div_games"></div>
+</body>
+</html>
+
+<script>
+    var today = new Date().toISOString().split("T")[0]
+    input_date.value = today
+
+    var token = ``
+
+    function changeDate() {
+        var date = input_date.value
+
+        getGames(date)
+    }
+
+    function getGames(date) {
+        fetch(`https://api.balldontlie.io/v1/games?dates[]=${date}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                console.log(resposta);
+
+                var content = ``
+
+                resposta.json().then(json => {
+                    var data = json.data
+                    console.log(data);
+
+                    for (var i = 0; i < data.length; i ++) {
+                        console.log(data[i]);
+                        console.log(i);
+
+                        content += `<p>${data[i].home_team.full_name} ${data[i].home_team_score} X ${data[i].visitor_team_score} ${data[i].visitor_team.full_name}</p> <br><br>`
+                        console.log(content);
+                        
+                    }
+                    div_games.innerHTML = content
+                })
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                console.log(resposta);
+                
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+    getGames(today)
+</script>

@@ -4,10 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        .section_main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .container h1 {
+            color: #FF6600;
+            font-weight: bolder;
+            font-size: 45px;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #input_date {
+            font-size: 22px;
+            margin: 15px 0px;
+            border-radius: 10px;
+        }
+
+        .div_games {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game_status {
+            width: 100%;
+            text-align: center;
+        }
+
+        .game_score {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            padding: 0px;
+            margin: 0px;
+
+        }
+
+    </style>
 </head>
 <body>
-    <input type="date" onchange="changeDate()" id="input_date">
-    <div id="div_games"></div>
+    <section class="section_main">
+        <div class="container">
+            <h1>Jogos</h1>
+            <input type="date" onchange="changeDate()" id="input_date">
+            <div id="div_games"></div>
+        </div>
+    </section>
 </body>
 </html>
 
@@ -45,11 +104,23 @@
 
                     for (var i = 0; i < data.length; i ++) {
                         console.log(data[i]);
-                        console.log(i);
 
-                        content += `<p>${data[i].home_team.full_name} ${data[i].home_team_score} X ${data[i].visitor_team_score} ${data[i].visitor_team.full_name}</p> <br><br>`
-                        console.log(content);
-                        
+                        var status = ``
+
+                        if (data[i].status == "Final") {
+                            status = 'Encerrado'
+                        } else {
+                            status = data[i].status.split('T')[0]
+                        }
+
+                        content += `
+                            <div class='game_status' style='color: ${(status == 'Encerrado' && '#7D7D7D') || (status == 'Acontecendo' && '#378F41')};'>${status}</div>
+                            <p class='game_score'>${data[i].home_team.full_name} ${data[i].home_team_score} 
+                                X 
+                                ${data[i].visitor_team_score} ${data[i].visitor_team.full_name}
+                            </p> 
+                            <br><br>
+                        `
                     }
                     div_games.innerHTML = content
                 })

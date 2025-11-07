@@ -96,9 +96,56 @@ header ul {
   height: 150px;
   float: left;
   padding: 0px 10px 0px 0px;
+  opacity: 0.8;
+}
+
+.content h1 {
+  color: #23242b;
 }
 
 .content p {
   text-align: justify;
   margin: 0px;
+  color: #23242b;
+}
+
+.section_ages {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.section_ages h1 {
+  text-align: center;
+  color: #d79234;
+  font-weight: bolder;
+  font-size: 40px;
+  margin: 40px 0px 30px 0px;
+}
+
+.section_ages .container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.div_player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div_player h2 {
+  margin: 0px;
+  font-size: 32px;
+  color: #23242b;
+}
+
+.div_player img {
+  width: 250px;
+  opacity: 0.8;
 }

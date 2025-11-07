@@ -46,6 +46,10 @@ header {
   align-items: center;
 }
 
+header div img {
+  height: 60px;
+}
+
 header a {
   text-decoration: none;
   color: #FFFFFF;

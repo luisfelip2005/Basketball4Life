@@ -52,11 +52,13 @@ header div img {
 
 header a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: #786a6a;
 }
 
 header ul {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 20px;
   list-style-type: none;
 }

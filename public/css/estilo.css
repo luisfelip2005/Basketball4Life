@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
-
+  background-color: #c6d5df;
 }
 
 .section_banner {
@@ -132,6 +132,7 @@ header ul {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .section_ages h1 {
@@ -174,6 +175,8 @@ header ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
+  margin-top: 40px;
 }
 
 .section_principles h1 {

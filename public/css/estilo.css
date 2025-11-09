@@ -100,13 +100,14 @@ header ul {
   flex-direction: column;
   gap: 20px;
   max-width: 800px;
-  background-color: #9da6b3;
+  background-color: #cad0d8;
 }
 
 .content img {
+  border-radius: 15px;
   height: 150px;
   float: left;
-  padding: 0px 10px 0px 0px;
+  margin: 0px 10px 0px 0px;
   opacity: 0.8;
 }
 

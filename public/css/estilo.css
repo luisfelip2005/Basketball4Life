@@ -140,12 +140,52 @@ header ul {
 }
 
 .div_player h2 {
-  margin: 0px;
+  margin: 0px 0px 5px 0px;
   font-size: 32px;
   color: #23242b;
 }
 
 .div_player img {
-  width: 250px;
+  width: 170px;
   opacity: 0.8;
+  border-radius: 15px;
+  border: 8px solid #9da6b3;
+}
+
+.section_principles {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section_principles h1 {
+  color: #d79234;
+  margin: 45px 0px 20px 0px;
+}
+
+.section_principles .container {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section_principles .container .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #9da6b3;
+  border-radius: 15px;
+  padding: 15px 20px;
+}
+
+.section_principles .container .card h2 {
+  margin: 0px 0px 15px 0px;
+  color: #23242b;
+}
+
+.section_principles .container .card p {
+  max-width: 300px;
+  margin: 0px;
+  text-align: justify;
 }

@@ -165,9 +165,11 @@ header ul {
 }
 
 .section_principles .container {
-  width: 85%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
 .section_principles .container .card {

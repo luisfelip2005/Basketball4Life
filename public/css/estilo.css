@@ -63,6 +63,17 @@ header ul {
   list-style-type: none;
 }
 
+.div_teams_row {
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid black; */
+  padding: 20px 0px;
+}
+
+.div_teams_row img {
+  width: 100px;
+}
+
 .section_history {
   display: flex;
   flex-direction: column;
@@ -82,7 +93,7 @@ header ul {
 }
 
 .content {
-  margin-top: 40px;
+  margin: 0px 0px 20px 0px;
   border-radius: 15px;
   padding: 15px 20px;
   display: flex;
@@ -122,7 +133,7 @@ header ul {
   color: #d79234;
   font-weight: bolder;
   font-size: 40px;
-  margin: 40px 0px 30px 0px;
+  margin: 30px 0px 30px 0px;
 }
 
 .section_ages .container {

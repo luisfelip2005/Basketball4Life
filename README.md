@@ -1,105 +1,29 @@
-<img src="https://user-images.githubusercontent.com/46379117/192358781-9ca879e4-e55e-4d0d-b876-f9a4a2ed9ae8.png" width="600px">
+# Contexto
 
-_Web Data Visualization = Visualização de Dados na Web_
+O basquete surgiu em 1891, nos Estados Unidos. Idealizado por James Naismith, um professor de Educação Física que, na época, lecionava na Associação Cristã de Moços de Springfield, em Massachusetts. Inicialmente desenvolvido com a intenção de ser um jogo para ser praticado durante o inverno, em um local fechado, pois o frio intenso impedia a prática no ar livre. O objetivo era ser uma prática simples, com exercícios completos e que não gerasse violência como ocorria com o futebol americano.  
+O professor Naismith idealizou uma prática que tivesse um alvo fixo e uma bola para ser arremessada nesse alvo, sendo uma disputa entre duas equipes, vencendo a que marcasse mais pontos. Na época, foram utilizadas cestas de pêssegos. Esses alvos foram colocados a 3,05 metros de altura, onde até hoje é a medida oficial.
 
-_Implementação de Referência para o seu Projeto de Primeiro Semestre_
+Posteriormente, as quadras de basquete se tornaram uma marca da luta por direitos e igualdade da comunidade negra. Historicamente, vários atletas negros se tornaram grandes nomes e protagonistas do esporte, como Kareem Abdul-Jabbar, Bill Russell, Wilt Chamberlain, Magic Johnson, Kobe Bryant, LeBron James e Michael Jordan, este último considerado o maior da história.
 
-<hr>
+O basquete chegou ao Brasil em 1896 com o missionário americano Augusto Shaw, que aplicou a prática no Colégio Mackenzie, em São Paulo. Na época, as mulheres tiveram maior interesse pela prática. Shaw teve dificuldades, no início, de incentivar o jogo aos homens, pois eles tinham um apreço maior ao futebol, deixando o basquete de lado.
 
-# Como usar
+No início de 1980 esse esporte veios a se popularizar com a rivalidade entre as equipes Los Angeles Lakers e Boston Celtics, protagonizados por Magic Johnson e Larry Bird, dois jogadores que marcaram uma era no esporte e levaram seus times a consecutivas disputas por títulos, onde esse legado pode ser visto nos dias de hoje na forte rivalidade entre essas mesmas equipes, sendo uma disputa acirrada entre quem tem mais títulos.
 
-1. Clone este repositório em sua máquina.
+Alguns anos depois, no início da década de 1990, o esporte veio a se tornar famoso a nível global, quando Michael Jordan, até hoje, o maior da história, levou o Chicago Bulls a conquista de 6 títulos da NBA, onde Michael Jordan protagonizou e decidiu vários jogos, e se tornou a estrela do time e da NBA.
+Michael Jordan marcou uma era no Basquete, deixando um legado de dedicação, perseverança, disciplina e resiliência, se tornando referência e inspiração para inúmeros jogadores da atualidade. Em seu famoso comercial da Nike ele ressaltou a importância de sua dedicação e perseverança:
 
+“Errei mais de 9.000 arremessos na minha carreira.
+Perdi quase 300 jogos.
+Em 26 ocasiões, confiaram em mim para fazer o arremesso da vitória — e eu errei.
+Falhei repetidas vezes na minha vida.
+E é por isso que eu tenho sucesso.”
 
-1. Crie, no Banco de Dados, as tabelas necessárias para o funcionamento deste projeto.
-- Siga as instruções no arquivo **/src/database/script-tabelas.sql**
+Anos depois, inspirado por Michael Jordan, Kobe Bryant, em uma atitude ousada, decidiu terminar o ensino médio e ir direto para a NBA, onde o comum entre os jogares era terminar o ensino médio e ir para a faculdade e disputar o basquete universitário e só depois disputar a NBA. Kobe escolheu ser ousado, e apostou tudo em seu talento e dedicação no basquete.
 
+Kobe Bryant deixou sua marca na história do basquete, onde ele mostrou que o talento por trás do talento se chama disciplina, ele tinha uma filosofia de vida chamada Mamba Mentality, que era baseada em uma matemática simples, Kobe observava os outros jogadores e notava que geralmente eles treinavam 3 vezes na semana em um período específico do dia, então concluiu que se ele treinasse mais que os outros jogadores, ele seria um jogador fora de série, ele então decidiu treinar todos os dias e várias vezes ao longo do dia, onde tudo isso forjou um jogador acima da média, se destacando na maioria das partidas e levando seu time a conquista de 5 títulos da NBA.
 
-3. Acesse o arquivo **app.js** e parametrize o ambiente.
-- Se você estiver utilizando o Ambiente de Produção (remoto), comente a linha 2 e deixe habilitada a linha 1 onde está o valor **var ambiente_processo = 'producao';**
-- Se você estiver utilizando o Ambiente de Desenvolvimento (local), comente a linha 1 e deixe habilitada a linha 2 onde está o valor **var ambiente_processo = 'desenvolvimento';**
+O basquete surgiu em minha vida nos meus 14 anos, onde eu não possuía talento para o futebol e era excluído na maioria das vezes em que jogava, mas quando eu jogava basquete eu enxergava em mim mesmo uma pré-disposição, onde sempre que eu jogava com meus colegas eu me destacava. O basquete fez com que eu me tornasse uma pessoa com mais confiança e autoestima, mas o mais importante, o basquete me mostrou que se eu me dedicasse em algo que eu gosto, eu poderia melhorar, tudo dependia do quanto eu estava disposto a me dedicar, e essa dedicação dependia do quanto eu apreciava aquilo que estava fazendo.
 
-4. Adicione as credenciais de Banco de Dados no arquivo **.env** ou em **.env.dev**, seguindo as instruções neste.
+# Bibliografia
 
-5. Acesse este repositório no seu terminal (GitBash ou VSCode) e execute os comandos abaixo:
-
-```
-npm i
-``` 
-_O comando acima irá instalar as bibliotecas necessárias para o funcionamento do projeto. As bibliotecas a serem instaladas estão listadas no arquivo **package.json** então é muito importante que este não seja alterado. Será criada uma nova pasta/diretório chamado **node_modules** quando o comando for finalizado, que é onde as bibliotecas estão localizadas. Não altere a pasta/diretório._
-
-```
-npm start
-``` 
-
-_O comando acima irá iniciar seu projeto e efetuar os comandos de acordo com a sua parametrização feita nos passos anteriores._
-
-6. Para "ver" seu projeto funcionando, acesse em seu navegador o caminho **informado no terminal**.
-
-7. Caso queira parar a execução, tecle **CTRL+C** no terminal em que o projeto está rodando.
-
-## Adicionar novo recurso ao projeto
-
-**"Recurso? O que é?"** Enquanto no Banco de Dados chamamos as tabelas de "entidades", quando tratamos de desenvolvimento WEB usamos a palavra "recurso" para se referir a algo que podemos criar, ler, atualizar ou deletar [1]. Estas ações são conhecidas como CRUD: Create, Read, Update e Delete. Para acessar cada ação, usamos os métodos HTTP: POST, GET, PUT e DELETE [2]. (Há outros verbos, porém com estes já conseguimos efetuar CRUDs). 
-
-**Tabela para ajudar a fazer a associação**
-
-<table>
-  <tr>
-    <th>C.R.U.D</th>
-    <th>Ação</th>
-    <th>Tradução</th>
-    <th>Verbo HTTP *</th>
-    <th>Comando BD</th>
-  </tr>
-  <tr>
-    <td>C</td>
-    <td>Create</td>
-    <td>Criar</td>
-    <td>POST</td>
-    <td>INSERT</td>
-  </tr>
-  <tr>
-    <td>R</td>
-    <td>Read</td>
-    <td>Ler</td>
-    <td>GET</td>
-    <td>SELECT</td>
-  </tr>
-  <tr>
-    <td>U</td>
-    <td>Update</td>
-    <td>Atualizar</td>
-    <td>PUT</td>
-    <td>UPDATE</td>
-  </tr>
-  <tr>
-    <td>D</td>
-    <td>Delete</td>
-    <td>Deletar</td>
-    <td>DELETE</td>
-    <td>DELETE</td>
-  </tr>
-</table>
-
-_* Você verá o verbo HTTP sendo apontado nos arquivos em /routes_
-
-**"E no meu projeto, o que seria um recurso?"** Em web-data-viz manipulamos os recursos **usuário**, **aviso** e **medida**. Podemos conferir isso vendo para quais entidades foram criados os caminhos de inserção e captura de dados, que envolve os diretórios **routes**, **controllers** e **models**.
-
-Abaixo, uma figura que ajuda a compreender o caminho percorrido para, por exemplo, efetuar o cadastro de um usuário:
-
-
-![image](https://github.com/user-attachments/assets/d576f178-0da6-437e-b5c9-658e3ebaf6ca)
-
-
-
-**Entendi o que é um recurso e gostaria de adicionar um novo ao meu projeto! Como faz?**  
-- Primeiro, crie a tabela no Banco de Dados referente a este recurso. Exemplos de recursos comuns de serem adicionados ao projeto no primeiro semestre: Silo, Aquário, Sala, Andar, Endereço, Mercado, Prateleira, Unidade, Carro, Caminhão...  
-- Assim que criada a tabela, faça todo o caminho de **front-end → routes → controllers → models** replicando o que já existe!  
-- Exemplo, se você quiser a funcionalidade de adicionar um novo Aquário, deve criar arquivos referentes ao aquario nos diretórios e replicar também as funções.  
-- Dica: A implementação de AVISO já contém o CRUD completo! :wink:
- 
-### Fontes bibliográficas
-
-[1] https://datatracker.ietf.org/doc/html/rfc2396  
-[2] https://datatracker.ietf.org/doc/html/rfc7231
+https://brasilescola.uol.com.br/educacao-fisica/basquetebol.htm

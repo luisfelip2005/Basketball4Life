@@ -45,13 +45,14 @@ header a {
     align-items: center;
     background-color: rgba(4, 9, 32, 0.6);
     border-radius: 15px;
-    padding: 25px 0px 40px 0px;
+    padding: 20px 0px 40px 0px;
 }
 
 .form_container form h1 {
     color: #d86518;
     text-align: center;
     font-weight: bolder;
+    font-size: 40px;
     margin: 0px;
     padding: 0px;
     margin-bottom: 25px;
@@ -63,7 +64,7 @@ header a {
 }
 
 .form_container form input {
-    opacity: 1;
+    background-color: #929eb0;
     width: 88%;
     height: 35px;
     font-size: 16px;
@@ -71,7 +72,25 @@ header a {
     border: 2px solid #9da6b3;
     border-radius: 7px;
     margin-bottom: 15px;
-    padding: 0px 5px;
+    padding: 0px 5px 0px 5px;
+}
+
+.form_container form div {
+    display: flex;
+    justify-content: space-between;
+    width: calc(88% + 15px);
+}
+
+.form_container form div span {
+    width: 45%;
+}
+
+.form_container form div input, label {
+    width: calc(100% - 15px);
+}
+
+.form_container form div label {
+    padding-left: 8px;
 }
 
 .form_container form button {

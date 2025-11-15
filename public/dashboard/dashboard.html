@@ -2,13 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/iconeBola.webp" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Basketball4life | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/estilo.css" />
     <link rel="stylesheet" href="./../css/dashboards.css">
     <script src="../js/sessao.js"></script>
@@ -34,7 +34,7 @@
             <div>
                 <img src="../assets/icon/logo.png" alt="logo">
             </div>
-    
+
             <nav>
                 <ul>
                     <li><a href="">Home</a></li>
@@ -43,7 +43,7 @@
                     <li><a href="">Memes</a></li>
                 </ul>
             </nav>
-    
+
             <div>
                 <ul>
                     <li><a href="">Login</a></li>
@@ -75,6 +75,36 @@
             </div>
         </div>
 
+        <div class="dashboards_container">
+            <div class="chart-container">
+                <div>
+                    <h3>Minutos treinados de cada dia</h3>
+                    <span>
+                        <h4>Ideal</h4>
+                        <p>
+                            Entre 90 min e 180 min
+                            <img src="../assets/icon/iconeBola.webp" alt="">
+                        </p>
+                    </span>
+                </div>
+                <canvas id="dashboard-minutes"></canvas>
+            </div>
+            <div class="chart-container">
+                <div>
+                    <h3>Percentual de conclusão do objetivo</h3>
+
+                    <span>
+                        <h4>Ideal</h4>
+                        <p>
+                            Entre 100% e 110%
+                            <img src="../assets/icon/iconeBola.webp" alt="">
+                        </p>
+                    </span>
+                </div>
+                <canvas id="dashboard-percent"></canvas>
+            </div>
+        </div>
+
         <div></div>
         <div></div>
     </section>
@@ -82,6 +112,103 @@
 </body>
 
 </html>
+
+<script>
+    const dashboard_minutes = document.getElementById('dashboard-minutes');
+
+    new Chart(dashboard_minutes, {
+        type: 'bar',
+        data: {
+            labels: ['10/11', '11/11', '12/11', '13/11', '14/11', '15/11', '16/11'],
+            datasets: [
+                {
+                    label: 'Minutos treinados (min)',
+                    data: [85, 88, 91, 94, 90, 86, 91],
+                    borderColor: ' #FF6600',
+                    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    fill: true
+                },
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    min: 0,
+                    title: {
+                        display: true,
+                        text: 'Minutos (min)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Data'
+                    }
+                }
+            }
+        }
+    });
+
+    const dashboard_percent = document.getElementById('dashboard-percent');
+
+    new Chart(dashboard_percent, {
+        type: 'line',
+        data: {
+            labels: ['10/11', '11/11', '12/11', '13/11', '14/11', '15/11', '16/11'],
+            datasets: [
+                {
+                    label: 'Percentual de conclusão (%)',
+                    data: [85, 88, 91, 94, 90, 86, 91],
+                    borderColor: ' #FF6600',
+                    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.3,
+                    fill: true
+                },
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    min: 0,
+                    title: {
+                        display: true,
+                        text: 'Percentual (%)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Data'
+                    }
+                }
+            }
+        }
+    });
+
+</script>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;

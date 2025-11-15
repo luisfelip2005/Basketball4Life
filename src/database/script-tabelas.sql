@@ -10,7 +10,7 @@ CREATE DATABASE Basketball;
 
 USE Basketball;
 
-CREATE TABLE User (
+CREATE TABLE user (
 	id_user INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(45) NOT NULL,
 	email VARCHAR(100) NOT NULL,
@@ -19,20 +19,20 @@ CREATE TABLE User (
 	weight DECIMAL(5, 2)
 );
 
-CREATE TABLE Training (
+CREATE TABLE training (
 	id_training INT PRIMARY KEY AUTO_INCREMENT,
 	starting_time TIME NOT NULL,
 	ending_time TIME NOT NULL,
 	trainig_date DATE NOT NULL,
 	fk_user INT,
-	FOREIGN KEY (fk_user) REFERENCES User(id_user)
+	FOREIGN KEY (fk_user) REFERENCES user(id_user)
 );
 
-CREATE TABLE WeeklyGoal (
+CREATE TABLE weeklyGoal (
 	id_goal INT PRIMARY KEY AUTO_INCREMENT,
 	time_goal INT,
 	qtd_weekly_goal INT,
-	period_of_day VARCHAR(15)
+	period_of_day VARCHAR(15),
 	fk_user INT,
-	FOREIGN KEY (fk_user) REFERENCES User(id_user)
+	FOREIGN KEY (fk_user) REFERENCES user(id_user)
 );

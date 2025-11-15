@@ -6,74 +6,80 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+  <title>Basketball4life | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/estilo.css" />
   <link rel="stylesheet" href="css/login.css">
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="icon" href="./assets/icon/iconeBola.webp" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
 <!-- <body onload="listar()"> -->
-  <body>
-    <section class="section_main">
-        <header>
-            <div>
-                <img src="./assets/icon/logo.png" alt="logo">
-            </div>
 
-            <nav>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Historia</a></li>
-                    <li><a href="">Jogos</a></li>
-                    <li><a href="">Memes</a></li>
-                </ul>
-            </nav>
+<body>
+  <section class="section_main">
+    <header>
+      <div>
+        <img src="./assets/icon/logo.png" alt="logo">
+      </div>
 
-            <div>
-                <ul>
-                    <li><a href="">Login</a></li>
-                    <li><a href="">Cadastro</a></li>
-                </ul>
-            </div>
-        </header>
-        <div class="container">
-            <div class="form_container">
-                <form action="">
-                    <h1>Cadastro</h1>
-                    <label for="input_name">Nome:</label>
-                    <input id="input_name" type="text">
-                    <label for="input_email">Email:</label>
-                    <input id="input_email" type="text">
+      <nav>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Historia</a></li>
+          <li><a href="">Jogos</a></li>
+          <li><a href="">Memes</a></li>
+        </ul>
+      </nav>
 
-                    <div>
-                      <span>
-                        <label for="input_height">Altura:</label>
-                        <input id="input_height" type="number">
-                      </span>
+      <div>
+        <ul>
+          <li><a href="">Login</a></li>
+          <li><a href="">Cadastro</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="form_container">
+        <form action="">
+          <h1>Cadastro</h1>
+          <label for="input_name">Nome:</label>
+          <input id="input_name" type="text">
+          <label for="input_email">Email:</label>
+          <input id="input_email" type="text">
 
-                      <span>
-                        <label for="input_weight">Peso:</label>
-                        <input id="input_weight" type="number">
-                      </span>
-                    </div>
+          <div>
+            <span>
+              <label for="input_height">Altura:</label>
+              <input id="input_height" type="number">
+            </span>
 
-                    <label for="input_password1">Senha:</label>
-                    <input id="input_password1" type="password">
-                    <label for="input_password2">Confirmar senha:</label>
-                    <input id="input_password2" type="password">
-                    <button type="button" onclick="entrar">Cadastrar</button>
-                </form>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
+            <span>
+              <label for="input_weight">Peso:</label>
+              <input id="input_weight" type="number">
+            </span>
+          </div>
+
+          <label for="input_password1">Senha:</label>
+          <input id="input_password1" type="password">
+          <label for="input_password2">Confirmar senha:</label>
+          <input id="input_password2" type="password">
+          <button type="button" onclick="register()">Cadastrar</button>
+        </form>
         <div></div>
         <div></div>
-    </section>
+      </div>
+    </div>
+    <div></div>
+    <div></div>
+  </section>
 </body>
 
 </html>
@@ -83,17 +89,17 @@
   // Array para armazenar empresas cadastradas para validação de código de ativação 
   let listaEmpresasCadastradas = [];
 
-  function cadastrar() {
+  function register() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var nomeVar = input_name.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_password1.value;
+    var confirmacaoSenhaVar = input_password2.value;
+    var heightVar = input_height.value
+    var weightVar = input_weight.value
 
     // Verificando se há algum campo em branco
     if (
@@ -101,7 +107,8 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      heightVar == "" ||
+      weightVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -114,17 +121,17 @@
     }
 
     // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
+    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+    //   if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+    //     idEmpresaVincular = listaEmpresasCadastradas[i].id
+    //     console.log("Código de ativação válido.");
+    //     break;
+    //   } else {
+    //     cardErro.style.display = "block";
+    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+    //     finalizarAguardar();
+    //   }
+    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -138,7 +145,8 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        heightServer: heightVar,
+        weightServer: weightVar
       }),
     })
       .then(function (resposta) {
@@ -169,24 +177,24 @@
   }
 
   // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
+  // function listar() {
+  //   fetch("/empresas/listar", {
+  //     method: "GET",
+  //   })
+  //     .then(function (resposta) {
+  //       resposta.json().then((empresas) => {
+  //         empresas.forEach((empresa) => {
+  //           listaEmpresasCadastradas.push(empresa);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+  //           console.log("listaEmpresasCadastradas")
+  //           console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+  //         });
+  //       });
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //     });
+  // }
 
   function sumirMensagem() {
     cardErro.style.display = "none";

@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Objetivos | Basketball4life</title>
+    <link rel="icon" href="./assets/icon/iconeBola.webp">
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/objetivo.css">
+
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao(), exibirObjetivos(),  atualizacaoPeriodica()">
     <header>
         <div>
             <img src="./assets/icon/logo.png" alt="logo">
@@ -31,19 +35,19 @@
             </ul>
         </div>
     </header>
-    <h1 id="welcome_message">Olá, Luís</h1>
+    <h1 id="welcome_message">Olá, <span id="span_name"></span></h1>
     <section class="section_goals">
         <div class="container">
             <h1>Objetivos</h1>
             <div class="container_cards">
                 <div class="card">
                     <p>Quantidade de treinos na semana</p>
-                    <span>3</span>
+                    <span id="qtd_training"></span>
                     <div></div>
                 </div>
                 <div class="card">
                     <p>Minutos na semana</p>
-                    <span>180min</span>
+                    <span id="qtd_minutes"></span>
                     <div></div>
                 </div>
             </div>
@@ -65,3 +69,11 @@
 </body>
 
 </html>
+
+<script>
+    function exibirObjetivos() {
+        qtd_training.innerHTML = sessionStorage.QTD_WEEKLY_GOAL
+        qtd_minutes.innerHTML = sessionStorage.TIME_GOAL + "min"
+        span_name.innerHTML = sessionStorage.NOME_USUARIO
+    }
+</script>

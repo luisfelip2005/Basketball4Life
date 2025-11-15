@@ -55,7 +55,7 @@ section .container {
     flex-wrap: wrap;
     gap: 40px;
     width: 100%;
-    max-width: 800px;
+    max-width: 680px;
 }
 
 .section_goals .container_cards .card {
@@ -89,6 +89,9 @@ section .container {
     flex-wrap: wrap;
     gap: 40px;
     width: 100%;
+    margin-top: -20px;
+    margin-bottom: 50px;
+    max-width: 680px;
 }
 
 .section_performance .container_cards .card {

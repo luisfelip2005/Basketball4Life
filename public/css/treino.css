@@ -24,10 +24,53 @@ header {
     justify-content: space-between;
 }
 
+.section_main .container .training_list {
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    max-width: 760px;
+    align-items: center;
+    background-color: rgba(4, 9, 32, 0.6);
+    border-radius: 15px;
+    padding: 20px 0px 40px 0px;
+}
+
+.section_main .container .training_list h1 {
+    color: #d86518;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 40px;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 25px;
+}
+
+.training_list div {
+    display: flex;
+    width: 88%;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    padding: 7px 8px;
+    color: #cc5b10;
+}
+
+#training_date {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#training_hour {
+    padding: 10px 8px;
+    color: #b2591e;
+    font-weight: 700;
+}
+
 form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 47%;
     max-width: 760px;
     align-items: center;
     background-color: rgba(4, 9, 32, 0.6);

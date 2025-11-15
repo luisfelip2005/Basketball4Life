@@ -1,5 +1,6 @@
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
+var goalModel = require("../models/goalModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -76,6 +77,7 @@ function cadastrar(req, res) {
         usuarioModel.cadastrar(name, email, password, height, weight)
             .then(
                 function (resultado) {
+                    goalModel.adicionar(resultado.insertId)
                     res.json(resultado);
                 }
             ).catch(

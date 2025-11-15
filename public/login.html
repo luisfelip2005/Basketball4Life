@@ -48,7 +48,7 @@
                     <input id="input_email" type="text">
                     <label for="input_password">Senha:</label>
                     <input id="input_password" type="password">
-                    <button type="button" onclick="entrar">Logar</button>
+                    <button type="button" onclick="entrar()">Logar</button>
                 </form>
                 <div></div>
                 <div></div>
@@ -66,8 +66,8 @@
     function entrar() {
         aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_password.value;
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
@@ -103,10 +103,12 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.TIME_GOAL = json.time_goal
+                    sessionStorage.QTD_WEEKLY_GOAL = json.qtd_weekly_goal
+                    // sessionStorage.period_of_day = json.period_of_day
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "objetivo.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

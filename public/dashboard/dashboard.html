@@ -9,8 +9,8 @@
     <title>AquaTech | Dashboards</title>
 
     
-    <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="./../css/dashboards.css">
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -29,51 +29,55 @@
 <!-- <body onload=" atualizarFeed()"> -->
 
 <body>
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+    <section class="section_main">
+        <header>
+            <div>
+                <img src="../assets/icon/logo.png" alt="logo">
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
+    
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Historia</a></li>
+                    <li><a href="">Jogos</a></li>
+                    <li><a href="">Memes</a></li>
+                </ul>
+            </nav>
+    
+            <div>
+                <ul>
+                    <li><a href="">Login</a></li>
+                    <li><a href="">Cadastro</a></li>
+                </ul>
             </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
+        </header>
+        <div class="container">
+            <div class="container_kpi">
+                <div class="main_kpi">
+                    <div class="card_kpi">
+                        <p>Minutos treinados hoje</p>
+                        <span>25min</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="status_kpi">
+                    <div class="card_kpi">
+                        <p>Minutos treinados nos últimos sete dias</p>
+                        <span>125min</span>
+                        <div></div>
+                    </div>
+                    <div class="card_kpi">
+                        <p>Percentual de conclusão do objetivo</p>
+                        <span>45%</span>
+                        <div></div>
+                    </div>
+                </div>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
-        </div>
-    </div>
-
+        <div></div>
+        <div></div>
+    </section>
 
 </body>
 

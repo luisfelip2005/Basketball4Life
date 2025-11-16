@@ -26,7 +26,16 @@ function addTraining(starting_time, ending_time, training_date, fk_user) {
     return database.executar(instrucaoSql);
 }
 
+function getTotalOfMinutesByDay(date, user_id) {
+    var instrucaoSql = `SELECT * FROM vw_total_of_minutes_by_day
+        WHERE YEARWEEK(training_date, 1) = YEARWEEK('${date}', 1) and fk_user = '${user_id}'
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     getTraining,
-    addTraining
+    addTraining,
+    getTotalOfMinutesByDay
 };

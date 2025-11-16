@@ -12,4 +12,8 @@ router.post("/get-training", function (req, res) {
     trainingController.getTraining(req, res);
 });
 
+router.post("/get-total-of-minutes", function (req, res) {
+    trainingController.getTotalOfMinutesByDay(req, res)
+})
+
 module.exports = router;

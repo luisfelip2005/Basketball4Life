@@ -56,19 +56,19 @@
                 <div class="main_kpi">
                     <div class="card_kpi">
                         <p>Minutos treinados hoje</p>
-                        <span>25min</span>
+                        <span id="span_total_today"></span>
                         <div></div>
                     </div>
                 </div>
                 <div class="status_kpi">
                     <div class="card_kpi">
                         <p>Minutos treinados nos últimos sete dias</p>
-                        <span>125min</span>
+                        <span id="span_total_week"></span>
                         <div></div>
                     </div>
                     <div class="card_kpi">
                         <p>Percentual de conclusão do objetivo</p>
-                        <span>45%</span>
+                        <span id="span_total_percent">45%</span>
                         <div></div>
                     </div>
                 </div>
@@ -217,6 +217,89 @@
 
     window.onload = obterDadosGrafico();
 
+    function updateKpi() {
+        var id_user = sessionStorage.ID_USUARIO
+
+        fetch(`/treino/get-today-training`, {
+            cache: 'no-store',
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/treino.js
+                date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+                // date: "2025-11-09",
+                user_id: id_user,
+            }),
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    console.log(resposta);
+                    console.log("KPIIIIII");
+
+                    span_total_today.innerHTML = `${resposta[0].total_minutes}min`
+                    
+                    if (!resposta[0].total_minutes) {
+                        span_total_today.innerHTML = `0min`
+                    }
+
+                    console.log(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
+
+                });
+            } else {
+                console.log(response);
+
+                console.error('Nenhum dado encontrado ou erro na API (KPIII)');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+            fetch(`/treino/get-week-training`, {
+            cache: 'no-store',
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/treino.js
+                date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+                // date: "2025-11-09",
+                user_id: id_user,
+            }),
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    console.log(resposta);
+                    console.log("KPIIIIII");
+
+                    span_total_week.innerHTML = `${resposta[0].total_minutes}min`
+                    
+                    if (!resposta[0].total_minutes) {
+                        span_total_week.innerHTML = `0min`
+                    }
+
+                    console.log(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
+
+                });
+            } else {
+                console.log(response);
+
+                console.error('Nenhum dado encontrado ou erro na API (KPIII)');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -234,6 +317,8 @@
 
         console.log(id_user);
 
+        updateKpi()
+
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
@@ -248,7 +333,7 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/treino.js
-                date:`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+                date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
                 // date: "2025-11-09",
                 user_id: id_user,
             }),
@@ -259,7 +344,7 @@
 
                     plotarGrafico(resposta);
                     console.log(`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`);
-                    
+
                 });
             } else {
                 console.log(response);

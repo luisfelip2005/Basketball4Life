@@ -36,3 +36,18 @@ CREATE TABLE weeklyGoal (
 	fk_user INT,
 	FOREIGN KEY (fk_user) REFERENCES user(id_user)
 );
+
+-- total of minutes in each day
+CREATE VIEW vw_total_of_minutes_by_day AS
+	SELECT training_date, 
+		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
+		FROM training 
+		WHERE YEARWEEK(training_date, 1) = YEARWEEK('2025-11-16', 1)
+		GROUP BY training_date;
+
+-- total of minutes in each week
+CREATE VIEW vw_total_of_minutes_by_week AS
+	SELECT 
+		YEARWEEK(training_date, 1) AS number_of_week, 
+		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
+		FROM training GROUP BY number_of_week;

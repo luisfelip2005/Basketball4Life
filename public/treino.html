@@ -75,49 +75,63 @@
         var training_date = input_date.value
         var id_user = sessionStorage.ID_USUARIO
 
-        console.log(starting_time, ending_time, training_date, id_user);
+        var time1 = starting_time;
+        var time2 = ending_time;
 
-        fetch("/treino/add-training", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/treino.js
-                starting_time: starting_time,
-                ending_time: ending_time,
-                training_date: training_date,
-                fk_user: id_user,
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
+        const date1 = new Date('2020-01-01 ' + time1);
+        const date2 = new Date('2020-01-01 ' + time2);
 
-                if (resposta.ok) {
-                    // cardErro.style.display = "block";
-                    console.log("treino adicionado");
+        if (!starting_time || !ending_time || !training_date || !id_user) {
+            console.log(`todos os campos precisam estar definidos`);
+        }
+        else if (date1.getTime() >= date2.getTime()) {
+            console.log(time1 + ' maior que ' + time2);
+        } 
+        else {
+            console.log(starting_time, ending_time, training_date, id_user);
 
-                    getTraining()
-
-                    // mensagem_erro.innerHTML =
-                    //     "Treino adicionado com sucesso!";
-
-                    // setTimeout(() => {
-                    //     window.location = "login.html";
-                    // }, "2000");
-
-                    // limparFormulario();
-                    // finalizarAguardar();
-                } else {
-                    console.log(starting_time, ending_time, training_date, id_user);
-                    throw "Houve um erro ao tentar adicionar treino!";
-                }
+            fetch("/treino/add-training", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/treino.js
+                    starting_time: starting_time,
+                    ending_time: ending_time,
+                    training_date: training_date,
+                    fk_user: id_user,
+                }),
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                // finalizarAguardar();
-            });
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        // cardErro.style.display = "block";
+                        console.log("treino adicionado");
+
+                        getTraining()
+
+                        // mensagem_erro.innerHTML =
+                        //     "Treino adicionado com sucesso!";
+
+                        // setTimeout(() => {
+                        //     window.location = "login.html";
+                        // }, "2000");
+
+                        // limparFormulario();
+                        // finalizarAguardar();
+                    } else {
+                        console.log(starting_time, ending_time, training_date, id_user);
+                        throw "Houve um erro ao tentar adicionar treino!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    // finalizarAguardar();
+                });
+        }
 
         return false;
 

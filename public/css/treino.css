@@ -146,3 +146,51 @@ form div input, label {
 form div label {
     padding-left: 8px;
 }
+
+.div_delete_training {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    width: 100%;
+    width: 250px;
+    padding: 30px 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(4, 9, 32, 0.9);
+    display: none;
+}
+
+.div_delete_training p {
+    font-size: 24px;
+    color: #b50f0f;
+}
+
+.div_delete_training span {
+    display: flex;
+    gap: 20px;
+}
+
+.div_delete_training span button:first-child {
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 5px 20px;
+    background-color: rgb(160, 7, 7);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.div_delete_training span button:last-child {
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 5px 20px;
+    background-color: rgb(8, 95, 8);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+}

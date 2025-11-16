@@ -60,12 +60,20 @@
         <div></div>
         <div></div>
     </section>
+    <div id="div_delete_training" class="div_delete_training">
+        <p>Tem certeza?</p>
+        <span>
+            <button onclick="div_delete_training.style.display = 'none'">Não</button>
+            <button on>Sim</button>
+        </span>
+    </div>
 </body>
 
 </html>
 
 <script>
     var trainingList = []
+    var training_id 
 
     window.onload = getTraining()
 
@@ -174,7 +182,7 @@
                                     <span>
                                         Editar
                                         |
-                                        Deletar
+                                        <span>Deletar</span>
                                     </span>
                                 </div>
                             `

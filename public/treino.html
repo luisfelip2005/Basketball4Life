@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/treino.css">
 </head>
+
 <body>
     <section class="section_main">
         <header>
             <div>
                 <img src="./assets/icon/logo.png" alt="logo">
             </div>
-    
+
             <nav>
                 <ul>
                     <li><a href="">Home</a></li>
@@ -22,7 +24,7 @@
                     <li><a href="">Memes</a></li>
                 </ul>
             </nav>
-    
+
             <div>
                 <ul>
                     <li><a href="">Login</a></li>
@@ -53,21 +55,77 @@
                     <input id="input_date" type="date">
                 </span>
                 <div>
-                      <span>
+                    <span>
                         <label for="input_start">Início:</label>
                         <input id="input_start" type="time">
-                      </span>
+                    </span>
 
-                      <span>
+                    <span>
                         <label for="input_end">Término:</label>
                         <input id="input_end" type="time">
-                      </span>
+                    </span>
                 </div>
-                <button type="button" onclick="entrar">Adicionar</button>
+                <button type="button" onclick="addTraining()">Adicionar</button>
             </form>
         </div>
         <div></div>
         <div></div>
     </section>
 </body>
+
 </html>
+
+<script>
+    function addTraining() {
+        var starting_time = input_start.value
+        var ending_time = input_end.value
+        var training_date = input_date.value
+        var id_user = sessionStorage.ID_USUARIO
+
+        console.log(starting_time, ending_time, training_date, id_user);
+
+        fetch("/treino/add-training", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/treino.js
+                starting_time: starting_time,
+                ending_time: ending_time,
+                training_date: training_date,
+                fk_user: id_user,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    // cardErro.style.display = "block";
+                    console.log("treino adicionado");
+                    
+
+                    // mensagem_erro.innerHTML =
+                    //     "Treino adicionado com sucesso!";
+
+                    // setTimeout(() => {
+                    //     window.location = "login.html";
+                    // }, "2000");
+
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    console.log(starting_time, ending_time, training_date, id_user);
+                    throw "Houve um erro ao tentar adicionar treino!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
+        return false;
+
+    }
+</script>

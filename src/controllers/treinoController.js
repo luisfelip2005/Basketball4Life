@@ -6,20 +6,20 @@ var trainigModel = require("../models/treinoModel")
 function addTraining(req, res) {
     var starting_time = req.body.starting_time
     var ending_time = req.body.ending_time
-    var trainig_date = req.body.trainig_date
+    var training_date = req.body.training_date
     var fk_user = req.body.fk_user
 
     if (starting_time == undefined) {
         res.status(400).send("Seu starting_time está undefined!");
     } else if (ending_time == undefined) {
         res.status(400).send("Sua ending_time está indefinida!");
-    }else if (trainig_date == undefined) {
-        res.status(400).send("Sua trainig_date está indefinida!");
+    }else if (training_date == undefined) {
+        res.status(400).send("Sua training_date está indefinida!");
     }else if (fk_user == undefined) {
         res.status(400).send("Sua fk_user está indefinida!");
     } else {
 
-        trainigModel.addTraining(starting_time, ending_time, trainig_date, fk_user)
+        trainigModel.addTraining(starting_time, ending_time, training_date, fk_user)
             .then(
                 function (trainigList) {
                     console.log(`\nResultados encontrados: ${trainigList.length}`);

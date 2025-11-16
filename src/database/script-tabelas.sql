@@ -48,6 +48,6 @@ CREATE VIEW vw_total_of_minutes_by_day AS
 -- total of minutes in each week
 CREATE VIEW vw_total_of_minutes_by_week AS
 	SELECT 
-		YEARWEEK(training_date, 1) AS number_of_week, 
+		YEARWEEK(training_date, 0) AS number_of_week, fk_user,
 		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
 		FROM training GROUP BY number_of_week;

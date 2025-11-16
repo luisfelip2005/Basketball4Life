@@ -34,8 +34,26 @@ function getTotalOfMinutesByDay(date, user_id) {
     return database.executar(instrucaoSql);
 }
 
+function getTodayTraining(date, user_id) {
+    var instrucaoSql = `SELECT SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
+        FROM training WHERE fk_user = '${user_id}' AND training_date = '${date}'
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function getWeekTraining(date, user_id) {
+    var instrucaoSql = `
+        SELECT * FROM vw_total_of_minutes_by_week WHERE number_of_week = YEARWEEK('${date}', 0) AND fk_user = '${user_id}';
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     getTraining,
     addTraining,
-    getTotalOfMinutesByDay
+    getTotalOfMinutesByDay,
+    getTodayTraining,
+    getWeekTraining
 };

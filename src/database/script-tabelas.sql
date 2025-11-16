@@ -39,10 +39,11 @@ CREATE TABLE weeklyGoal (
 
 -- total of minutes in each day
 CREATE VIEW vw_total_of_minutes_by_day AS
-	SELECT training_date, fk_user,
+	SELECT DATE_FORMAT(training_date,'%d/%m/%Y') AS `_training_date`, fk_user, training_date,
 		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
 		FROM training 
-		GROUP BY training_date;
+		GROUP BY training_date
+        ORDER BY training_date;
 
 -- total of minutes in each week
 CREATE VIEW vw_total_of_minutes_by_week AS

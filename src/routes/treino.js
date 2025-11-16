@@ -32,4 +32,12 @@ router.post("/get-all-data", function(req, res) {
     trainingController.getAllTraining(req, res)
 })
 
+router.delete("/delete-training/:id", function(req, res) {
+    trainingController.deleteTraining(req, res)
+})
+
+router.put("/update-training", function(req, res) {
+    trainingController.updateTraining(req, res)
+})
+
 module.exports = router;

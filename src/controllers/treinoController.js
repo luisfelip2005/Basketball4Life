@@ -1,6 +1,3 @@
-var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
-var goalModel = require("../models/goalModel");
 var trainigModel = require("../models/treinoModel")
 
 function addTraining(req, res) {
@@ -20,6 +17,41 @@ function addTraining(req, res) {
     } else {
 
         trainigModel.addTraining(starting_time, ending_time, training_date, fk_user)
+            .then(
+                function (trainigList) {
+                    console.log(`\nResultados encontrados: ${trainigList.length}`);
+                    console.log(`Resultados: ${JSON.stringify(trainigList)}`); // transforma JSON em String
+
+                    res.json(trainigList)
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
+function updateTraining(req, res) {
+    var starting_time = req.body.starting_time
+    var ending_time = req.body.ending_time
+    var training_date = req.body.training_date
+    var training_id = req.body.training_id
+
+    if (starting_time == undefined) {
+        res.status(400).send("Seu starting_time está undefined!");
+    } else if (ending_time == undefined) {
+        res.status(400).send("Sua ending_time está indefinida!");
+    }else if (training_date == undefined) {
+        res.status(400).send("Sua training_date está indefinida!");
+    }else if (training_id == undefined) {
+        res.status(400).send("Sua training_id está indefinida!");
+    } else {
+
+        trainigModel.updateTraining(training_id, starting_time, ending_time, training_date)
             .then(
                 function (trainigList) {
                     console.log(`\nResultados encontrados: ${trainigList.length}`);
@@ -220,6 +252,35 @@ function getAllTraining(req, res) {
     }
 }
 
+
+function deleteTraining(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var training_id = req.params.id;
+
+    // Faça as validações dos valores
+    if (training_id == undefined) {
+        res.status(400).send("Seu training_id está undefined!");
+    } else {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        trainigModel.deleteTrining(training_id)
+            .then(
+                function (resultado) {
+
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao deletar treino! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     addTraining,
     getTraining,
@@ -227,5 +288,7 @@ module.exports = {
     getTodayTraining,
     getWeekTraining,
     getConclusionPercent,
-    getAllTraining
+    getAllTraining,
+    deleteTraining,
+    updateTraining
 }

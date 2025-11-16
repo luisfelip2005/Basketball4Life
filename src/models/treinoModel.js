@@ -66,6 +66,28 @@ function getAllData(user_id) {
     return database.executar(instrucaoSql);
 }
 
+function deleteTrining(id_training) {
+    var instrucaoSql = `
+        DELETE FROM training WHERE id_training = '${id_training}';
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+function updateTraining(id_training, starting_time, ending_time, training_date) {
+    var instrucaoSql = `
+        UPDATE training 
+        SET 
+        starting_time = '${starting_time}', 
+        ending_time = '${ending_time}', 
+        training_date = '${training_date}' 
+        WHERE id_training = '${id_training}';
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     getTraining,
     addTraining,
@@ -73,5 +95,7 @@ module.exports = {
     getTodayTraining,
     getWeekTraining,
     getConclusionPercent,
-    getAllData
+    getAllData,
+    deleteTrining,
+    updateTraining
 };

@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 var goalModel = require("../models/goalModel");
 
 function autenticar(req, res) {

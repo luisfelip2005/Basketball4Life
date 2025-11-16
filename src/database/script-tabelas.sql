@@ -23,7 +23,7 @@ CREATE TABLE training (
 	id_training INT PRIMARY KEY AUTO_INCREMENT,
 	starting_time TIME NOT NULL,
 	ending_time TIME NOT NULL,
-	trainig_date DATE NOT NULL,
+	training_date DATE NOT NULL,
 	fk_user INT,
 	FOREIGN KEY (fk_user) REFERENCES user(id_user)
 );

@@ -50,10 +50,28 @@ function getWeekTraining(date, user_id) {
     return database.executar(instrucaoSql);
 }
 
+function getConclusionPercent(date, user_id) {
+    var instrucaoSql = `
+        SELECT * FROM vw_percent_conclusion WHERE number_of_week = YEARWEEK('${date}', 0) AND fk_user = '${user_id}';
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function getAllData(user_id) {
+    var instrucaoSql = `
+        SELECT * FROM vw_percent_conclusion WHERE fk_user = '${user_id}';
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     getTraining,
     addTraining,
     getTotalOfMinutesByDay,
     getTodayTraining,
-    getWeekTraining
+    getWeekTraining,
+    getConclusionPercent,
+    getAllData
 };

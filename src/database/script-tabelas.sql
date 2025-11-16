@@ -51,3 +51,13 @@ CREATE VIEW vw_total_of_minutes_by_week AS
 		YEARWEEK(training_date, 0) AS number_of_week, fk_user,
 		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
 		FROM training GROUP BY number_of_week;
+
+CREATE VIEW vw_percent_conclusion AS
+	SELECT number_of_week, 
+	t.fk_user,
+    time_goal, 
+    total_minutes, 
+    round((total_minutes * 100) / time_goal) AS conclusion_percent 
+    FROM vw_total_of_minutes_by_week AS t 
+    JOIN weeklyGoal AS g ON g.fk_user = t.fk_user
+    ORDER BY number_of_week ASC;

@@ -159,10 +159,73 @@ function getWeekTraining(req, res) {
     }
 }
 
+
+function getConclusionPercent(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var user_id = req.body.user_id;
+    var date = req.body.date;
+
+    // Faça as validações dos valores
+    if (user_id == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else if (date == undefined) {
+        res.status(400).send("Seu date está undefined!");
+    } else {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        trainigModel.getConclusionPercent(date, user_id)
+            .then(
+                function (resultado) {
+
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao buscar treinos! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+
+function getAllTraining(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var user_id = req.body.user_id;
+
+    // Faça as validações dos valores
+    if (user_id == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else {
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        trainigModel.getAllData(user_id)
+            .then(
+                function (resultado) {
+
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao buscar treinos! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     addTraining,
     getTraining,
     getTotalOfMinutesByDay,
     getTodayTraining,
-    getWeekTraining
+    getWeekTraining,
+    getConclusionPercent,
+    getAllTraining
 }

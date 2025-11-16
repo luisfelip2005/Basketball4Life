@@ -24,4 +24,12 @@ router.post("/get-week-training", function (req, res) {
     trainingController.getWeekTraining(req, res)
 })
 
+router.post("/get-conclusion-percent", function(req, res) {
+    trainingController.getConclusionPercent(req, res)
+})
+
+router.post("/get-all-data", function(req, res) {
+    trainingController.getAllTraining(req, res)
+})
+
 module.exports = router;

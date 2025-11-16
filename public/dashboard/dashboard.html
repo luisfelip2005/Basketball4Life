@@ -68,7 +68,7 @@
                     </div>
                     <div class="card_kpi">
                         <p>Percentual de conclusão do objetivo</p>
-                        <span id="span_total_percent">45%</span>
+                        <span id="span_total_percent"></span>
                         <div></div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                     console.log("KPIIIIII");
 
                     span_total_today.innerHTML = `${resposta[0].total_minutes}min`
-                    
+
                     if (!resposta[0].total_minutes) {
                         span_total_today.innerHTML = `0min`
                     }
@@ -260,7 +260,7 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
-            fetch(`/treino/get-week-training`, {
+        fetch(`/treino/get-week-training`, {
             cache: 'no-store',
             method: "POST",
             headers: {
@@ -282,9 +282,50 @@
                     console.log("KPIIIIII");
 
                     span_total_week.innerHTML = `${resposta[0].total_minutes}min`
-                    
+
                     if (!resposta[0].total_minutes) {
                         span_total_week.innerHTML = `0min`
+                    }
+
+                    console.log(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
+
+                });
+            } else {
+                console.log(response);
+
+                console.error('Nenhum dado encontrado ou erro na API (KPIII)');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+        fetch(`/treino/get-conclusion-percent`, {
+            cache: 'no-store',
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/treino.js
+                date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`,
+                // date: "2025-11-09",
+                user_id: id_user,
+            }),
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    console.log(resposta);
+                    console.log("KPIIIIII");
+
+                    span_total_percent.innerHTML = `${resposta[0].conclusion_percent}%`
+
+                    if (!resposta[0].total_minutes) {
+                        span_total_percent.innerHTML = `0%`
                     }
 
                     console.log(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);

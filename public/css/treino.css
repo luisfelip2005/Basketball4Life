@@ -147,6 +147,10 @@ form div label {
     padding-left: 8px;
 }
 
+.list_button {
+    cursor: pointer;
+}
+
 .div_delete_training {
     position: fixed;
     top: 30%;

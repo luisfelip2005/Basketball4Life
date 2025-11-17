@@ -64,7 +64,7 @@
         <p>Tem certeza?</p>
         <span>
             <button onclick="div_delete_training.style.display = 'none'">Não</button>
-            <button on>Sim</button>
+            <button onclick="deleteTraining()">Sim</button>
         </span>
     </div>
 </body>
@@ -145,6 +145,46 @@
 
     }
 
+    function askDeleteTraining(id) {
+        console.log(id);
+        div_delete_training.style.display = 'flex'
+        sessionStorage.DELETE_TRAINING_ID = id
+        console.log(sessionStorage.DELETE_TRAINING_ID);
+        
+    }
+
+    function deleteTraining() {
+        var training_id = sessionStorage.DELETE_TRAINING_ID
+        fetch(`/treino/delete-training/${training_id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    // cardErro.style.display = "block";
+                    console.log("delete de treino ok");
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        div_delete_training.style.display = 'none'
+                        getTraining()
+                    });
+                } else {
+                    console.log(training_id);
+                    throw "Houve um erro ao tentar deletar treino!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+    }
+
     function getTraining() {
         var id_user = sessionStorage.ID_USUARIO
 
@@ -180,9 +220,9 @@
                                         <span id="training_hour">${json[i].starting_time} -> ${json[i].ending_time}</span>
                                     </span>
                                     <span>
-                                        Editar
+                                        <span class="list_button">Editar</span>
                                         |
-                                        <span>Deletar</span>
+                                        <span class="list_button" value="${json[i].id_training}" onclick="askDeleteTraining(${json[i].id_training})">Deletar</span>
                                     </span>
                                 </div>
                             `

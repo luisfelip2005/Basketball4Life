@@ -40,6 +40,11 @@
                 </ul>
             </div>
         </header>
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
         <div class="container">
             <div class="form_container">
                 <form action="">
@@ -73,6 +78,7 @@
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
+            setInterval(sumirMensagem, 10000)
             return false;
         }
         else {
@@ -131,7 +137,7 @@
     }
 
     function sumirMensagem() {
-       // cardErro.style.display = "none"
+        // cardErro.style.display = "none"
     }
 
 </script>

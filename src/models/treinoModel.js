@@ -60,7 +60,7 @@ function getConclusionPercent(date, user_id) {
 
 function getAllData(user_id) {
     var instrucaoSql = `
-        SELECT * FROM vw_percent_conclusion WHERE fk_user = '${user_id}' GROUP BY number_of_week;
+        SELECT number_of_week, SUM(total_minutes) AS total_minutes FROM vw_percent_conclusion WHERE fk_user = '${user_id}' GROUP BY number_of_week;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

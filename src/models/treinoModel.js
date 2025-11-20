@@ -44,7 +44,10 @@ function getTodayTraining(date, user_id) {
 
 function getWeekTraining(date, user_id) {
     var instrucaoSql = `
-        SELECT * FROM vw_total_of_minutes_by_week WHERE number_of_week = YEARWEEK('${date}', 0) AND fk_user = '${user_id}';
+        SELECT 
+		YEARWEEK(training_date, 0) AS number_of_week, fk_user,
+		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
+		FROM training WHERE YEARWEEK(training_date, 0) = YEARWEEK('${date}', 0) AND fk_user = '${user_id}' GROUP BY number_of_week;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

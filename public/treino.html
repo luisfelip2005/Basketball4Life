@@ -75,6 +75,13 @@
     var trainingList = []
     var training_id 
 
+    var dateInput = input_date.value
+    var today = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
+    input_date.value = today
+    input_date.max = today
+    input_start.value = '10:00'
+    input_end.value = '11:00'
+
     window.onload = getTraining()
 
     function addTraining() {

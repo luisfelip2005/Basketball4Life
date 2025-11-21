@@ -59,6 +59,12 @@ header a {
   color: #786a6a;
 }
 
+header a:hover {
+  text-decoration: none;
+  color: #FF6600;
+  transition: 0.7s;
+}
+
 header ul {
   display: flex;
   flex-wrap: wrap;

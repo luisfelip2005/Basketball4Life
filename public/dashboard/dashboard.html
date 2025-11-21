@@ -184,11 +184,12 @@
                     console.log(resposta);
                     console.log("KPIIIIII");
 
-                    span_total_week.innerHTML = `${resposta[0].total_minutes}min`
-
-                    if (!resposta[0].total_minutes) {
+                    if (!resposta[0]) {
                         span_total_week.innerHTML = `0min`
+                    } else {
+                        span_total_week.innerHTML = `${resposta[0].total_minutes}min`
                     }
+
 
                     console.log(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
 
@@ -225,11 +226,14 @@
                     console.log(resposta);
                     console.log("KPIIIIII");
 
-                    span_total_percent.innerHTML = `${resposta[0].conclusion_percent}%`
 
-                    if (!resposta[0].total_minutes) {
+                    if (!resposta[0]) {
                         span_total_percent.innerHTML = `0%`
-                    }
+                    } else {
+                        span_total_percent.innerHTML = `${resposta[0].conclusion_percent}%`
+                    } 
+
+
 
                     console.log(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`);
 

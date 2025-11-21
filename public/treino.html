@@ -7,9 +7,11 @@
     <title>Treino</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/treino.css">
+    <script src="./js/sessao.js"></script>
+    <script src="./js/alerta.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao(), getTraining()">
     <section class="section_main">
         <header>
             <div>
@@ -81,8 +83,6 @@
     input_date.max = today
     input_start.value = '10:00'
     input_end.value = '11:00'
-
-    window.onload = getTraining()
 
     function addTraining() {
         var starting_time = input_start.value

@@ -28,7 +28,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body onload="validarSessao(), obterDadosGrafico()">
     <section class="section_main">
         <header>
             <div>
@@ -117,8 +117,6 @@
     // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
-
-    window.onload = obterDadosGrafico();
 
     function updateKpi() {
         var id_user = sessionStorage.ID_USUARIO

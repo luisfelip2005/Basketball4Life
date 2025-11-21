@@ -37,27 +37,30 @@ CREATE TABLE weeklyGoal (
 	FOREIGN KEY (fk_user) REFERENCES user(id_user)
 );
 
--- total of minutes in each day
-CREATE VIEW vw_total_of_minutes_by_day AS
+CREATE OR REPLACE VIEW vw_total_of_minutes_by_day AS
 	SELECT DATE_FORMAT(training_date,'%d/%m/%Y') AS `_training_date`, fk_user, training_date,
-		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
+		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes,
+        starting_time,
+        ending_time
 		FROM training 
-		GROUP BY training_date
+		GROUP BY id_training
         ORDER BY training_date;
 
+
 -- total of minutes in each week
-CREATE VIEW vw_total_of_minutes_by_week AS
+CREATE OR REPLACE VIEW vw_total_of_minutes_by_week AS
 	SELECT 
 		YEARWEEK(training_date, 0) AS number_of_week, fk_user,
 		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes 
-		FROM training GROUP BY number_of_week;
+		FROM training GROUP BY fk_user;
 
-CREATE VIEW vw_percent_conclusion AS
-	SELECT number_of_week, 
+CREATE OR REPLACE VIEW vw_percent_conclusion AS
+	SELECT YEARWEEK(training_date, 0) AS number_of_week,
 	t.fk_user,
     time_goal, 
-    total_minutes, 
-    round((total_minutes * 100) / time_goal) AS conclusion_percent 
-    FROM vw_total_of_minutes_by_week AS t 
+    SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes,
+    round(SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time) * 100) / time_goal) AS conclusion_percent 
+    FROM training AS t 
     JOIN weeklyGoal AS g ON g.fk_user = t.fk_user
+    GROUP BY id_training
     ORDER BY number_of_week ASC;

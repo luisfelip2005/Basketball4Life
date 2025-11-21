@@ -27,8 +27,9 @@ function addTraining(starting_time, ending_time, training_date, fk_user) {
 }
 
 function getTotalOfMinutesByDay(date, user_id) {
-    var instrucaoSql = `SELECT * FROM vw_total_of_minutes_by_day
+    var instrucaoSql = `SELECT *, SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes FROM vw_total_of_minutes_by_day
         WHERE YEARWEEK(training_date, 0) = YEARWEEK('${date}', 0) and fk_user = '${user_id}'
+        GROUP BY training_date
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -55,7 +56,15 @@ function getWeekTraining(date, user_id) {
 
 function getConclusionPercent(date, user_id) {
     var instrucaoSql = `
-        SELECT * FROM vw_goal_conclusion_percent WHERE number_of_week = YEARWEEK('${date}', 0) AND fk_user = '${user_id}' GROUP BY number_of_week;
+        SELECT YEARWEEK(training_date, 0) AS number_of_week, 
+		t.fk_user,
+		time_goal, 
+		SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) AS total_minutes, 
+		round((SUM(TIMESTAMPDIFF(MINUTE, starting_time, ending_time)) * 100) / time_goal) AS conclusion_percent 
+		FROM training AS t 
+		JOIN weeklyGoal AS g ON g.fk_user = t.fk_user
+        WHERE t.fk_user = '${user_id}' AND YEARWEEK(training_date, 0) = YEARWEEK('${date}', 0)
+        GROUP BY number_of_week 
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

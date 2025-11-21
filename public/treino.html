@@ -58,12 +58,35 @@
         <div></div>
         <div></div>
     </section>
+
     <div id="div_delete_training" class="div_delete_training">
         <p>Tem certeza?</p>
         <span>
             <button onclick="div_delete_training.style.display = 'none'">Não</button>
             <button onclick="deleteTraining()">Sim</button>
         </span>
+    </div>
+
+    <div onclick="hideOrShowUpdateTraining(0)" id="div_update_training" class="div_update_training">
+        <form onclick="hideOrShowUpdateTraining(1)" action="">
+            <h1>Atualizar Treino</h1>
+            <span class="input_date_container">
+                <label for="input_update_date">Data:</label>
+                <input disabled id="input_update_date" type="date">
+            </span>
+            <div>
+                <span>
+                    <label for="input_update_start">Início:</label>
+                    <input id="input_update_start" type="time">
+                </span>
+
+                <span>
+                    <label for="input_update_end">Término:</label>
+                    <input id="input_update_end" type="time">
+                </span>
+            </div>
+            <button type="button" onclick="addTraining()">Atualizar</button>
+        </form>
     </div>
 </body>
 
@@ -156,6 +179,35 @@
 
     }
 
+    var cont = 0
+
+    function hideOrShowUpdateTraining(situation) {
+        if (cont % 2 == 0 && situation == 0) {
+            div_update_training.style.display = 'none'
+            cont = 1
+        } else {
+            div_update_training.style.display = 'flex'
+            showUpdateTrainingSituation = 1
+        }
+        console.log(cont);
+        
+        cont++
+    }
+
+    function askUpdateTraining(id, starting_time, ending_time, training_date) {
+        console.log(id);
+        div_update_training.style.display = 'flex'
+        sessionStorage.UPDATE_TRAINING_ID = id
+        console.log(sessionStorage.UPDATE_TRAINING_ID);
+        input_update_start.value = starting_time
+        input_update_end.value = ending_time
+        training_date = training_date.split('/')
+        training_date = `${training_date[2]}-${training_date[1]}-${training_date[0]}`
+        console.log(training_date);
+        
+        input_update_date.value = training_date
+    }
+
     function deleteTraining() {
         var training_id = sessionStorage.DELETE_TRAINING_ID
         fetch(`/treino/delete-training/${training_id}`, {
@@ -223,7 +275,7 @@
                                         <span id="training_hour">${json[i].starting_time} -> ${json[i].ending_time}</span>
                                     </span>
                                     <span>
-                                        <span class="list_button">Editar</span>
+                                        <span class="list_button" value="${json[i].id_training}" onclick="askUpdateTraining(${json[i].id_training}, '${json[i].starting_time}', '${json[i].ending_time}', '${json[i].training_date}')">Editar</span>
                                         |
                                         <span class="list_button" value="${json[i].id_training}" onclick="askDeleteTraining(${json[i].id_training})">Deletar</span>
                                     </span>

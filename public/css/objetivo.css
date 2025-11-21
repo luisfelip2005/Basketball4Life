@@ -55,7 +55,7 @@ section .container {
     flex-wrap: wrap;
     gap: 40px;
     width: 100%;
-    max-width: 680px;
+    max-width: 700px;
 }
 
 .section_goals .container_cards .card {
@@ -91,12 +91,12 @@ section .container {
     width: 100%;
     margin-top: -20px;
     margin-bottom: 50px;
-    max-width: 680px;
+    max-width: 700px;
 }
 
 .section_performance .container_cards .card {
     background-color: rgba(66, 63, 63, 0.3);
-    border: 3px solid #b4571d;
+    border: 4px solid #ff7b00;
     border-radius: 8px;
     height: 170px;
     width: 300px;
@@ -111,4 +111,22 @@ section .container {
     font-size: 50px;
     font-weight: bolder;
     color: #a96024;
+}
+
+.section_performance .container_cards a :hover {
+    background-color: rgba(66, 63, 63, 0.5);
+    border: 5px solid #FF6600;
+    width: 330px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.9s;
+}
+
+.section_performance .container_cards .card :hover {
+    background-color: transparent;
+    transition: 0s;
+    border: none;
 }

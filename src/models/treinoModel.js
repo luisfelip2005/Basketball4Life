@@ -7,7 +7,7 @@ function getTraining(fk_user) {
             DATE_FORMAT(starting_time,'%H:%i') as starting_time,
             DATE_FORMAT(ending_time,'%H:%i') as ending_time, 
             DATE_FORMAT(training_date,'%d/%m/%Y') as training_date 
-            FROM training WHERE fk_user = '${fk_user}' ORDER BY id_training DESC;
+            FROM training WHERE fk_user = '${fk_user}' ORDER BY training_date DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

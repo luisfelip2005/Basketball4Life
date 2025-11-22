@@ -85,7 +85,7 @@
                     <input id="input_update_end" type="time">
                 </span>
             </div>
-            <button type="button" onclick="addTraining()">Atualizar</button>
+            <button type="button" onclick="updateTraining()">Atualizar</button>
         </form>
     </div>
 </body>
@@ -112,8 +112,8 @@
         var time1 = starting_time;
         var time2 = ending_time;
 
-        const date1 = new Date('2020-01-01 ' + time1);
-        const date2 = new Date('2020-01-01 ' + time2);
+        const date1 = new Date('2025-01-01 ' + time1);
+        const date2 = new Date('2025-01-01 ' + time2);
 
         if (!starting_time || !ending_time || !training_date || !id_user) {
             console.log(`todos os campos precisam estar definidos`);
@@ -206,6 +206,60 @@
         console.log(training_date);
         
         input_update_date.value = training_date
+    }
+
+    function updateTraining() {
+        var training_id = sessionStorage.UPDATE_TRAINING_ID
+        var starting_time = input_update_start.value
+        var ending_time = input_update_end.value
+        var training_date = input_update_date.value
+
+        var time1 = starting_time;
+        var time2 = ending_time;
+
+        const date1 = new Date('2025-01-01 ' + time1);
+        const date2 = new Date('2025-01-01 ' + time2);
+
+        if (!starting_time || !ending_time || !training_date || !training_id) {
+            console.log(`todos os campos precisam estar definidos`);
+        }
+        else if (date1.getTime() >= date2.getTime()) {
+            console.log(time1 + ' maior que ' + time2);
+        } else {
+            fetch(`/treino/update-training`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/treino.js
+                    starting_time: starting_time,
+                    ending_time: ending_time,
+                    training_date: training_date,
+                    training_id: training_id,
+                }),
+            })
+            .then(function (response) {
+                console.log(response);
+                if (response.ok) {
+                    console.log('update training ok');
+                    
+                    response.json().then(json => {
+                        console.log(json);
+                        div_delete_training.style.display = 'none'
+                        getTraining()
+                        div_update_training.style.display = 'none'
+                    });
+                } else {
+                    console.log(training_id);
+                    throw "err";
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERR: ${resposta}`);
+                // finalizarAguardar();
+            });
+        }
     }
 
     function deleteTraining() {

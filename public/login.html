@@ -76,9 +76,9 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            setInterval(sumirMensagem, 10000)
+            mensagem_erro.innerHTML = "Preencha todos os campos!";
+            // finalizarAguardar();
+            setInterval(sumirMensagem, 5000)
             return false;
         }
         else {
@@ -123,8 +123,12 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
+                
                 resposta.text().then(texto => {
                     console.error(texto);
+                    cardErro.style.display = "block"
+                    mensagem_erro.innerHTML = texto;
+                    setInterval(sumirMensagem, 5000)
                     finalizarAguardar(texto);
                 });
             }
@@ -137,7 +141,7 @@
     }
 
     function sumirMensagem() {
-        // cardErro.style.display = "none"
+        cardErro.style.display = "none"
     }
 
 </script>

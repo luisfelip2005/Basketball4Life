@@ -112,7 +112,7 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Preencha todos os campos!";
       setInterval(sumirMensagem, 10000);
 
       finalizarAguardar();
@@ -166,6 +166,8 @@
           limparFormulario();
           finalizarAguardar();
         } else {
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML = "Houve um erro ao tentar realizar o cadastro!";
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })

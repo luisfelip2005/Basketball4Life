@@ -12,9 +12,10 @@ header {
 .card_erro {
   display: none;
   background-color: rgba(4, 9, 32, 0.9);
-  color: #d70606;
-  width: 230px;
+  color: #ff7575;
+  width: 300px;
   position: fixed;
+  top: 80px;
   right: 0px;
   font-weight: bolder;
   border-radius: 4px;

@@ -2,7 +2,7 @@ body {
     background-image: linear-gradient(rgba(4, 9, 30, 0.9), rgba(4, 9, 30, 0.9)), url(../assets/imgs/107-1.jpg);
     background-position: center;
     background-size: cover;
-    
+    padding-bottom: 50px;
 }
 
 header {
@@ -44,8 +44,8 @@ section .container {
     width: 100%;
 }
 
-.section_performance .container {
-    margin-top: 60px;
+.section_goals .container {
+    margin-bottom: 40px;
 }
 
 .section_goals .container_cards {
@@ -86,12 +86,13 @@ section .container {
 .section_performance .container_cards {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     /* border: 2px solid blue; */
     flex-wrap: wrap;
     gap: 40px;
     width: 100%;
-    margin-top: -20px;
-    margin-bottom: 50px;
+    /* margin-top: -20px; */
+    /* margin-bottom: 50px; */
     max-width: 700px;
 }
 

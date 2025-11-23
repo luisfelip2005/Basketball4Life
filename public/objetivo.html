@@ -92,7 +92,7 @@
                     <input id="input_update_time" type="number">
                 </span>
             </div>
-            <button type="button" onclick="updateTraining()">Atualizar</button>
+            <button type="button" onclick="updateGoal()">Atualizar</button>
         </form>
     </div>
 </body>
@@ -107,19 +107,49 @@
     }
 
     var cont = 1
-
+    input_update_qtd.value = sessionStorage.QTD_WEEKLY_GOAL
+    input_update_time.value = sessionStorage.TIME_GOAL
     function hideOrShowUpdateTraining(situation) {
         if (cont % 2 == 0 && situation == 0) {
             div_update_training.style.display = 'none'
             cont = 0
         } else {
-            input_update_qtd.value = sessionStorage.QTD_WEEKLY_GOAL
-            input_update_time.value = sessionStorage.TIME_GOAL
             div_update_training.style.display = 'flex'
             showUpdateTrainingSituation = 1
         }
         console.log(cont);
         
         cont++
+    }
+
+    function updateGoal() {
+        var user_id = Number(sessionStorage.ID_USUARIO)
+        var time_goal = Number(input_update_time.value)
+        var qtd = Number(input_update_qtd.value)
+
+        if (user_id > 0 && time_goal > 0 && qtd > 0) {
+            fetch("/goal/update-goal", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user_id: user_id,
+                    time_goal: time_goal,
+                    qtd: qtd
+                })
+            })
+            .then((json) => {
+                console.log(json);
+                hideOrShowUpdateTraining(0)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        } else {
+            // error message
+
+        }
+
     }
 </script>

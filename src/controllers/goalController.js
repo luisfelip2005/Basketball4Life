@@ -18,6 +18,19 @@ function updateGoal(req, res) {
     }
 }
 
+function getGoal(req, res) {
+    var user_id = req.params.user_id
+
+    goalModel.getGoal(user_id) 
+    .then((json) => {
+        res.json(json)
+    })
+    .catch((err) => {
+        res.status(500).json(err)
+    })
+}
+
 module.exports = {
-    updateGoal
+    updateGoal,
+    getGoal
 }

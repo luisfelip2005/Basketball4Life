@@ -41,7 +41,7 @@
                         <span></span>
                         <span></span>
                         Quantidade de treinos na semana 
-                        <img src="./assets/icon/settings.png" height="25" alt="">
+                        <img onclick="hideOrShowUpdateTraining(1)" src="./assets/icon/settings.png" height="25" alt="">
                     </p>
                     <span id="qtd_training"></span>
                     <div></div>
@@ -52,11 +52,12 @@
                         <span></span>
                         <span></span>
                         Minutos na semana
-                        <img src="./assets/icon/settings.png" height="25" alt="">
+                        <img onclick="hideOrShowUpdateTraining(1)" src="./assets/icon/settings.png" height="25" alt="">
                     </p>
                     <span id="qtd_minutes"></span>
                     <div></div>
-                    <div></div>                </div>
+                    <div></div>                
+                </div>
             </div>
         </div>
     </section>
@@ -77,6 +78,23 @@
             </div>
         </div>
     </section>
+    <div onclick="hideOrShowUpdateTraining(0)" id="div_update_training" class="div_update_training">
+        <form onclick="hideOrShowUpdateTraining(1)" action="">
+            <h1>Atualizar Objetivo</h1>
+            <div>
+                <span>
+                    <label for="input_update_qtd">Quantidade:</label>
+                    <input id="input_update_qtd" type="number">
+                </span>
+
+                <span>
+                    <label for="input_update_time">Minutos na semana:</label>
+                    <input id="input_update_time" type="number">
+                </span>
+            </div>
+            <button type="button" onclick="updateTraining()">Atualizar</button>
+        </form>
+    </div>
 </body>
 
 </html>
@@ -86,5 +104,22 @@
         qtd_training.innerHTML = sessionStorage.QTD_WEEKLY_GOAL
         qtd_minutes.innerHTML = sessionStorage.TIME_GOAL + "min"
         span_name.innerHTML = sessionStorage.NOME_USUARIO
+    }
+
+    var cont = 1
+
+    function hideOrShowUpdateTraining(situation) {
+        if (cont % 2 == 0 && situation == 0) {
+            div_update_training.style.display = 'none'
+            cont = 0
+        } else {
+            input_update_qtd.value = sessionStorage.QTD_WEEKLY_GOAL
+            input_update_time.value = sessionStorage.TIME_GOAL
+            div_update_training.style.display = 'flex'
+            showUpdateTrainingSituation = 1
+        }
+        console.log(cont);
+        
+        cont++
     }
 </script>

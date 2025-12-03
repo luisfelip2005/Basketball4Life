@@ -120,6 +120,6 @@ header {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.chart-container div span p img {
-  height: 20px;
+.chart-container div span img {
+  height: 28px;
 }

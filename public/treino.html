@@ -98,8 +98,18 @@
     var training_id
 
     var dateInput = input_date.value
-    var today = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
+    var year = new Date().getFullYear()
+    var month = new Date().getMonth() + 1
+    var date = new Date().getDate()
+    if (date < 10) {
+        date = `0${date}`
+    }
+    console.log(date);
+    
+    var today = `${year}-${month}-${date}`
     input_date.value = today
+    console.log(today);
+    
     input_date.max = today
     input_start.value = '10:00'
     input_end.value = '11:00'

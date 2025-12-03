@@ -256,7 +256,8 @@ header ul {
 .section_principles .container .card p {
   max-width: 300px;
   margin: 0px;
-  text-align: justify;
+  text-align: start;
+  font-style: italic;
 }
 
 footer {

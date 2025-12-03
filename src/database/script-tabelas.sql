@@ -15,8 +15,8 @@ CREATE TABLE user (
 	name VARCHAR(45) NOT NULL,
 	email VARCHAR(100) UNIQUE NOT NULL,
 	password VARCHAR(255) NOT NULL,
-	height DECIMAL(3, 2),
-	weight DECIMAL(5, 2)
+	height INT, -- cm
+	weight INT -- kg
 );
 
 CREATE TABLE training (

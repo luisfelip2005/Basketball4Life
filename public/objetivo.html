@@ -13,7 +13,7 @@
     <script src="../js/alerta.js"></script>
 </head>
 
-<body onload="validarSessao(), exibirObjetivos()">
+<body onload="validarSessao(), getGoal()">
     <header>
         <div>
             <img src="./assets/icon/logo.png" alt="logo">
@@ -100,7 +100,7 @@
 </html>
 
 <script>
-    function exibirObjetivos() {
+    function showGoals() {
         qtd_training.innerHTML = sessionStorage.QTD_WEEKLY_GOAL
         qtd_minutes.innerHTML = sessionStorage.TIME_GOAL + "min"
         span_name.innerHTML = sessionStorage.NOME_USUARIO
@@ -117,7 +117,7 @@
                     sessionStorage.QTD_WEEKLY_GOAL = json[0].qtd_weekly_goal
                     sessionStorage.TIME_GOAL = json[0].time_goal
 
-                    exibirObjetivos()
+                    showGoals()
                 })
             }
         })

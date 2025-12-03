@@ -57,12 +57,12 @@
 
           <div>
             <span>
-              <label for="input_height">Altura:</label>
+              <label for="input_height">Altura (cm):</label>
               <input id="input_height" type="number">
             </span>
 
             <span>
-              <label for="input_weight">Peso:</label>
+              <label for="input_weight">Peso (kg):</label>
               <input id="input_weight" type="number">
             </span>
           </div>
@@ -117,22 +117,19 @@
 
       finalizarAguardar();
       return false;
-    } else {
+    } 
+    else if (heightVar.includes(".") || weightVar.includes(".")) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Se atente as unidades de medida!";
+      setInterval(sumirMensagem, 10000);
+
+      finalizarAguardar();
+      return false;
+    }    
+    else {
       setInterval(sumirMensagem, 5000);
     }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-    //   if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-    //     idEmpresaVincular = listaEmpresasCadastradas[i].id
-    //     console.log("Código de ativação válido.");
-    //     break;
-    //   } else {
-    //     cardErro.style.display = "block";
-    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-    //     finalizarAguardar();
-    //   }
-    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -178,26 +175,6 @@
 
     return false;
   }
-
-  // Listando empresas cadastradas 
-  // function listar() {
-  //   fetch("/empresas/listar", {
-  //     method: "GET",
-  //   })
-  //     .then(function (resposta) {
-  //       resposta.json().then((empresas) => {
-  //         empresas.forEach((empresa) => {
-  //           listaEmpresasCadastradas.push(empresa);
-
-  //           console.log("listaEmpresasCadastradas")
-  //           console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-  //         });
-  //       });
-  //     })
-  //     .catch(function (resposta) {
-  //       console.log(`#ERRO: ${resposta}`);
-  //     });
-  // }
 
   function sumirMensagem() {
     cardErro.style.display = "none";

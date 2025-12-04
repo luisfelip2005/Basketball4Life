@@ -6,9 +6,9 @@
 comandos para mysql server
 */
 
--- CREATE USER 'admin_B4L'@'%' IDENTIFIED BY 'Admin@1234';
+-- CREATE USER 'luis'@'%' IDENTIFIED BY 'Sptech#1234';
 
--- GRANT * ON Basketball.* TO 'admin_B4L'@'%';
+-- GRANT ALL PRIVILEGES ON Basketball.* TO 'luis'@'%';
 
 -- FLUSH PRIVILEGES;
 

@@ -1,3 +1,17 @@
+
+# Trello
+
+<img src="./Documentacao/trello.png" width="600px">
+
+https://trello.com/invite/b/691e365b64c7e2ebdb001291/ATTIf18290ae3142e47a29347363c155cc7eC7A8058A/basketball4life
+
+# Protótipo no Figma:
+
+https://www.figma.com/design/LmCqp6KTLN2l8qvRBxxQeL/ProjetoIndividual?node-id=0-1&t=4qewe9GxstJEDCBj-1
+
+
+OBS: os arquivos de documentacao estão na pasta documentacao e os arquivos de banco de dados estão na pasta src/database 
+
 # Contexto
 
 O basquete surgiu em 1891, nos Estados Unidos. Idealizado por James Naismith, um professor de Educação Física que, na época, lecionava na Associação Cristã de Moços de Springfield, em Massachusetts. Inicialmente desenvolvido com a intenção de ser um jogo para ser praticado durante o inverno, em um local fechado, pois o frio intenso impedia a prática no ar livre. O objetivo era ser uma prática simples, com exercícios completos e que não gerasse violência como ocorria com o futebol americano.  
